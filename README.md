@@ -2,6 +2,10 @@
 
 A modern, offline-first React Native application built with Expo SDK 54, TanStack Query, and MMKV for high-performance task and habit tracking.
 
+## 📺 Demo
+
+[![Demo Video](https://img.shields.io/badge/Demo-Video-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/1GV7E9cXCvHyf49WY14adii3SSckukp-G/view)
+
 ## 🚀 Features
 
 - **Task Management**: Create, edit, and delete tasks with priority levels.
