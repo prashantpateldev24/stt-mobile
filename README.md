@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# Smart Task Tracker 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, offline-first React Native application built with Expo SDK 54, TanStack Query, and MMKV for high-performance task and habit tracking.
 
-## Get started
+## 🚀 Features
 
-1. Install dependencies
+- **Task Management**: Create, edit, and delete tasks with priority levels.
+- **Habit Tracking**: Track daily habits with automated streak management.
+- **Offline First**: Full offline support with optimistic UI updates and background synchronization.
+- **Secure Auth**: Email/OTP based authentication flow.
+- **Modern UI**: Built with React Native components and premium design aesthetics.
 
-   ```bash
-   npm install
-   ```
+## 🛠️ Prerequisites
 
-2. Start the app
+- [Node.js](https://nodejs.org/) (LTS)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/) or [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [Watchman](https://facebook.github.io/watchman/docs/install) (for macOS users)
 
-   ```bash
-   npx expo start
-   ```
+## 📦 Getting Started
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Clone the repository
 ```bash
-npm run reset-project
+git clone <repository-url>
+cd smart-task-tracker
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-## Learn more
+### 3. Setup Environment Variables
+Create a `.env` file from the example:
+```bash
+cp .env.example
+```
+Update `EXPO_PUBLIC_API_URL` in `.env` with your backend server URL (e.g., `http://localhost:4000`).
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🏗️ Development Build (Required)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This project uses **`react-native-mmkv`**, which contains native code. Therefore, it **cannot run in Expo Go**. You must use a Development Build or Prebuild the project.
 
-## Join the community
+### Step 1: Prebuild the project
+This generates the `ios` and `android` native directories.
+```bash
+npx expo prebuild
+```
 
-Join our community of developers creating universal apps.
+### Step 2: Run on Simulator/Emulator
+This will install the development build on your device or emulator.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**iOS:**
+```bash
+npm run ios
+```
+
+**Android:**
+```bash
+npm run android
+```
+
+## 🖥️ Project Structure
+
+- `src/app`: File-based routing (Expo Router).
+- `src/components`: Reusable UI and Form components.
+- `src/features`: Feature-based modules (Auth, Tasks, Habits, Offline).
+- `src/services`: API clients and Query configuration.
+- `src/storage`: Local persistence logic (MMKV).
+- `src/utils`: Helper functions and error handling.
+
+## 📜 Available Scripts
+
+- `npm start`: Starts the Expo development server.
+- `npm run ios`: Runs the app on iOS simulator (Prebuild required).
+- `npm run android`: Runs the app on Android emulator (Prebuild required).
+- `npm run lint`: Runs ESLint to check code quality.
+- `npm run format`: Formats code using Prettier.
+
+## 🧪 Development Notes
+
+- **Offline Sync**: Actions performed while offline are enqueued and automatically synced when the connection is restored.
+- **MMKV**: Used for fast, synchronous storage of auth tokens and small state pieces.
+- **TanStack Query**: Handles server state, caching, and optimistic updates.
